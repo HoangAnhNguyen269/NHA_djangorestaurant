@@ -16,3 +16,11 @@ class Ingredient(models.Model):
         unit_price={self.price_per_unit}
         """
 
+class MenuItem(models.Model):
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=100)
+    price= models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+    
+    def __str__(self):
+        return f"title={self.title}; price={self.price}"
+
