@@ -24,3 +24,17 @@ class MenuItem(models.Model):
     def __str__(self):
         return f"title={self.title}; price={self.price}"
 
+class RecipeRequirements(models.Model):
+    menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    quantity = models.FloatField()
+    
+    def __str__(self):
+        return f"""
+        menu_item={self.menu_item};
+        ingredient={self.ingredient};
+        qty={self.quantity}
+        """
+
+
+    
