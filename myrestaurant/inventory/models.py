@@ -2,6 +2,9 @@ from django.db import models
 
 # Create your models here.
 class Ingredient(models.Model):
+    """
+    Represents a single ingredient in the restaurant's inventory
+    """
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=100)
     quantity = models.IntegerField()
@@ -17,6 +20,10 @@ class Ingredient(models.Model):
         """
 
 class MenuItem(models.Model):
+    """
+    Represents an entry off the restaurant's menu
+    """
+    
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=100)
     price= models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
@@ -25,6 +32,9 @@ class MenuItem(models.Model):
         return f"title={self.title}; price={self.price}"
 
 class RecipeRequirements(models.Model):
+    """
+    Represents an ingredient required for a recipe for a MenuItem
+    """
     menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.FloatField()
@@ -37,6 +47,9 @@ class RecipeRequirements(models.Model):
         """
 
 class Purchase(models.Model):
+    """
+    Represents a purchase of a MenuItem
+    """
     menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     timestamp = models.DateTimeField(auto_now_add=True)
