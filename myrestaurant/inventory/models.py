@@ -29,7 +29,7 @@ class MenuItem(models.Model):
     price= models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
     
     def __str__(self):
-        return f"title={self.title}; price={self.price}"
+        return f"title={self.name}; price={self.price}"
 
 class RecipeRequirements(models.Model):
     """
