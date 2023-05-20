@@ -6,7 +6,7 @@ class Ingredient(models.Model):
     Represents a single ingredient in the restaurant's inventory
     """
     name = models.CharField(max_length=30)
-    description = models.CharField(max_length=100)
+    description = models.CharField(max_length=100, default="")
     quantity = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
     unit = models.CharField(max_length=10)
     price_per_unit = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
@@ -25,7 +25,7 @@ class MenuItem(models.Model):
     """
     
     name = models.CharField(max_length=30)
-    description = models.CharField(max_length=100)
+    description = models.CharField(max_length=100, default="")
     price= models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
     
     def __str__(self):
