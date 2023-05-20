@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block title %}Home{% endblock %}
+{% block content %}
+
+    {% comment %} Ingredients block {% endcomment %}
+    <div>
+        <h2>Ingredients</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ingredient</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th>Unit Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ingredient in ingredients %}
+                    <tr>
+                        <td>{{ ingredient.name }}</td>
+                        <td>{{ ingredient.quantity }}</td>
+                        <td>{{ ingredient.unit }}</td>
+                        <td>${{ ingredient.price_per_unit }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            
+         </table>   
+    </div>
+
+    {% comment %} Purchase block {% endcomment %}
+    <div>
+        <h2>Purchase</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Menu Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for purchase in purchases %}
+                    <tr>
+                        <td>{{ purchase.menu_item.name }}</td>
+                        <td>{{ purchase.quantity }}</td>
+                        <td>${{ purchase.menu_item.price }}</td>
+                        <td>{{ purchase.timestamp }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>   
+        </table>
+    </div>
+
+    {% comment %} Menu Items Block {% endcomment %}
+    <div>
+        <h2>Menu Items</h2>
+        {% for menu_item in menu_items %}
+            <div>
+                <h3>{{ menu_item.name }}</h3>
+                <p>${{ menu_item.price }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}
